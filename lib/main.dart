@@ -1,7 +1,14 @@
+import 'package:clone_whatsapp/chatdata.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:clone_whatsapp/Homepage.dart';
 
-void main() {
+import 'Boxdef.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(ChatdataAdapter());
+  Chatbox = await Hive.openBox<Chatdata>('chatBox');
   runApp(const MyApp());
 }
 
@@ -20,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WhatHome(),
+      home:WhatHome() ,
     );
   }
 }

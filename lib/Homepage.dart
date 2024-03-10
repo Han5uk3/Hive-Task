@@ -15,123 +15,136 @@ class _WhatHomeState extends State<WhatHome>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: DefaultTabController(initialIndex: 1,
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(indicatorColor: Colors.white,
-              isScrollable: true,
-              labelPadding: EdgeInsets.zero,onTap: (value) {
-
-              },
-              tabs: <Widget>[
-                Container(
-                  width: 38,
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            indicatorColor: Colors.white,
+            isScrollable: true,
+            physics: const NeverScrollableScrollPhysics(),
+            labelPadding: EdgeInsets.zero,
+            onTap: (value) {},
+            tabAlignment: TabAlignment.center,
+            tabs: <Widget>[
+              const Icon(
+                Icons.groups,
+                color: Colors.black,
+              ),
+              Container(
+                  width: 124.2,
                   height: 50,
                   alignment: Alignment.center,
-                  child: Icon(
-                    Icons.groups,
-                    color: Colors.white,
-                  ),
-                ),
-                Container(
-                    width: 124.2,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Chats",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
-                Container(
-                    width: 124.2,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Updates",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
-                Container(
-                    width: 124.2,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Calls",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
-              ],
-            ),
-            title: const Text(
-              'WhatsApp',
-              style: TextStyle(
-                  color: Colors.white,
-
-                  fontSize: 24),
-            ),
-            iconTheme: const IconThemeData(color: Colors.white),
-            backgroundColor: Colors.teal,
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.camera_alt_outlined,
-                    color: Colors.white,
+                  child: const Text(
+                    "Chats",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   )),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.search,
-                    color: Colors.white,
+              Container(
+                  width: 124.2,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Updates",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   )),
-              PopupMenuButton<String>(
-                itemBuilder: (context) => [
-                  const PopupMenuItem(
-                    value: 'New group',
-                    child: Text('New group'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'New broadcast',
-                    child: Text('New broadcast'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'Linked Devices',
-                    child: Text('Linked devices'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'Starred messages',
-                    child: Text('Starred messages'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'Payment',
-                    child: Text('Payment'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'Settings',
-                    child: Text('Settings'),
-                  ),
-                ],
-                onSelected: (value) {
-                  // Handle menu item selection
-                },
-              ),
+              Container(
+                  width: 124.2,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Calls",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  )),
             ],
           ),
-          body: TabBarView(children: const [
-            Groups(),
-            ChatsPage(),
-            Updates(),
-            Calls(),
-          ]),
+          title: const Text(
+            'WhatsApp',
+            style: TextStyle(color: Colors.black, fontSize: 24),
+          ),
+          iconTheme: const IconThemeData(color: Colors.white),
+          backgroundColor: Colors.teal,
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.camera_alt_outlined,
+                  color: Colors.black,
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                )),
+            PopupMenuButton<String>(
+              color: Colors.black,
+              iconColor: Colors.black,
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 'New group',
+                  child: Text(
+                    'New group',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: 'New broadcast',
+                  child: Text(
+                    'New broadcast',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: 'Linked Devices',
+                  child: Text(
+                    'Linked devices',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: 'Starred messages',
+                  child: Text(
+                    'Starred messages',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: 'Payment',
+                  child: Text(
+                    'Payment',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: 'Settings',
+                  child: Text(
+                    'Settings',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+              onSelected: (value) {
+                // Handle menu item selection
+              },
+            ),
+          ],
         ),
+        body: const TabBarView(children: [
+          Groups(),
+          ChatsPage(),
+          Updates(),
+          Calls(),
+        ]),
       ),
     );
   }

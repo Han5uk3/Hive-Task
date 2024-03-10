@@ -37,7 +37,7 @@ final String channelname;
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10),
-                  child: Text(channelname,
+                  child: Text(channelname,style: TextStyle(color: Colors.white),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -51,7 +51,7 @@ final String channelname;
                         onPressed: () {},
                         child: Text(
                           "Follow",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         )))
               ],
             )),

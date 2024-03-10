@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Groups extends StatefulWidget {
   const Groups({super.key});
 
@@ -9,6 +10,8 @@ class Groups extends StatefulWidget {
 class _GroupsState extends State<Groups> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      backgroundColor: Colors.black,
+    );
   }
 }

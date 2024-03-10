@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:clone_whatsapp/utilits/widgets/horizontal_list_view.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'Boxdef.dart';
+import 'chatdata.dart';
+
 class Updates extends StatefulWidget {
   const Updates({super.key});
 
@@ -14,19 +17,9 @@ class Updates extends StatefulWidget {
 class _GroupsState extends State<Updates> {
   bool toggle = true;
   bool recent = true;
-  List stat = [
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-    {"name": "Adwaith", "time": "10:15 AM", "image": Colors.blue},
-  ];
+  Chatdata inte = Chatbox.getAt(0);
+  Chatdata ante = Chatbox.getAt(1);
+
 List vu =[];
   List chn = [
     {"color": Colors.red, "cname": "Star Sports India"},
@@ -46,30 +39,35 @@ List vu =[];
   }
   @override
   Widget build(BuildContext context) {
+    List stat = [
+      {"name": "Adwaith", "time": inte.time, "image": Colors.redAccent},
+      {"name": "Anees Rahman", "time": ante.time, "image": Colors.blueAccent},
+
+    ];
     return SafeArea(
-        child: Scaffold(
+        child: Scaffold(backgroundColor: Colors.black,
       body: SafeArea(
           top: true,
           bottom: false,
           child: ListView(
             children: [
               ListTile(
-                  title: Text(
+                  title: const Text(
                     "Status",
                     style: TextStyle(
                         color: Colors.green,
                         fontWeight: FontWeight.bold,
                         fontSize: 22),
                   ),
-                  contentPadding: EdgeInsets.only(
+                  contentPadding: const EdgeInsets.only(
                     left: 16.0,
                   ),
-                  trailing: PopupMenuButton(
+                  trailing: PopupMenuButton(iconColor: Colors.grey,color: Colors.black,
 
                     itemBuilder: (context) => [
-                      PopupMenuItem(
+                      const PopupMenuItem(
                           value: "Status privacy",
-                          child: Text("Status privacy")),
+                          child: Text("Status privacy",style: TextStyle(color: Colors.white),)),
                     ],
                   )),
               ListTile(
@@ -87,10 +85,10 @@ List vu =[];
                   "Tap to add status update",
                   style: TextStyle(color: Colors.grey),
                 ),
-                leading: Container(
+                leading: SizedBox(
                   height: 56,
                   width: 56,
-                  child: img == null ?Stack(children: [
+                  child: img == null ?const Stack(children: [
 
                     Positioned(
                         child: CircleAvatar(
@@ -113,7 +111,7 @@ List vu =[];
                   ])
                       : Stack(alignment: Alignment.center,children: [
 
-                    Positioned(
+                    const Positioned(
                         child: CircleAvatar(
                           radius: 25,
                           backgroundColor: Colors.green,
@@ -130,13 +128,13 @@ List vu =[];
               ),
 
               Visibility(visible: recent,
-                child: Container(
+                child: const SizedBox(
                   height: 30,
                   child: Row(
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 16),
+                          padding: EdgeInsets.only(left: 16),
                           child: Text(
                             "Recent Updates",
                             style: TextStyle(color: Colors.grey),
@@ -188,13 +186,13 @@ List vu =[];
               ),
 
 
-              Container(
+              SizedBox(
                 height: 30,
                 child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: EdgeInsets.only(left: 16),
                         child: Text(
                           "Viewed Updates",
                           style: TextStyle(color: Colors.grey),
@@ -259,7 +257,7 @@ List vu =[];
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: ListTile(
                       title: Text(
                         "Channels",
@@ -275,19 +273,19 @@ List vu =[];
                           "Stay updated on topics that matter to you. Find channels to follow below",style: TextStyle(color: Colors.grey),),
                     ),
                   ),
-                  PopupMenuButton(
-                    icon: Icon(Icons.add, color: Colors.grey, size: 30),
+                  PopupMenuButton(color: Colors.black,
+                    icon: const Icon(Icons.add, color: Colors.grey, size: 30),
                     itemBuilder: (context) => [
-                      PopupMenuItem(
+                      const PopupMenuItem(
                           value: "Create channel",
-                          child: Text("Create channel")),
-                      PopupMenuItem(
-                          value: "Find channels", child: Text("Find channels"))
+                          child: Text("Create channel",style: TextStyle(color: Colors.white),)),
+                      const PopupMenuItem(
+                          value: "Find channels", child: Text("Find channels",style: TextStyle(color: Colors.white),))
                     ],
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 170,
                 child: ListView.builder(
@@ -310,7 +308,7 @@ List vu =[];
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                    margin: EdgeInsets.only(left: 16, top: 20),
+                    margin: const EdgeInsets.only(left: 16, top: 20),
                     decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(28)),
@@ -318,12 +316,12 @@ List vu =[];
                     width: 123,
                     child: TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "Explore Now",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 135,
               ),
             ],
@@ -336,18 +334,18 @@ List vu =[];
             child: FloatingActionButton(
                 backgroundColor: Colors.grey,
                 onPressed: () {},
-                child: Icon(
+                mini: true,
+                child: const Icon(
                   Icons.edit,
-                  color: Colors.white,
-                ),
-                mini: true),
+                  color: Colors.black,
+                )),
           ),
           FloatingActionButton(
             backgroundColor: Colors.green,
             onPressed: () {},
-            child: Icon(
+            child: const Icon(
               Icons.camera_alt_rounded,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ],
