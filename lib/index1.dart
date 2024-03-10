@@ -192,7 +192,7 @@ class _arState extends State<ar> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        leadingWidth: 20,
+        leadingWidth: 25,
         backgroundColor: Colors.teal,
         title: Row(
           children: [
@@ -317,7 +317,7 @@ class _arState extends State<ar> {
         ],
       ),
       body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+        physics: NeverScrollableScrollPhysics(),
         child: IntrinsicHeight(
           child: Column(
             children: [
@@ -325,7 +325,7 @@ class _arState extends State<ar> {
                 padding: const EdgeInsets.only(top: 10),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height - 175,
+                  height: MediaQuery.of(context).size.height - 185,
                   child: ListView.builder(
                       itemCount: Chatbox.length,
                       shrinkWrap: true,
@@ -419,7 +419,7 @@ class _arState extends State<ar> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.only(top: 8),
                 child: Row(
                   children: [
                     Expanded(

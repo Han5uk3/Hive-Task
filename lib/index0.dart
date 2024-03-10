@@ -317,14 +317,14 @@ class _adState extends State<ad> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView(physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height - 175,
+                height: MediaQuery.of(context).size.height - 185,
                 child: ListView.builder(
                     itemCount: Chatbox.length,
                     shrinkWrap: true,
@@ -420,79 +420,82 @@ class _adState extends State<ad> {
                     }),
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                    child: TextField(
-                  controller: cont,
-                  onEditingComplete: () {
-                    ind++;
-                    DateTime now = DateTime.now();
-                    String formattedDate = DateFormat('kk:mm').format(now);
-                    Chatbox.put(
-                      "$ind",
-                      Chatdata(
-                        content: cont.text,
-                        time: formattedDate,
-                        ky: "1",
-                        indx: ind,
-                      ),
-                    );
-                    cont.clear();
-                    setState(() {});
-                  },
-                  cursorWidth: 3,
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.green,
-                  decoration: InputDecoration(
-                      hintText: "Message",
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      filled: true,
-                      fillColor: Colors.grey.shade600,
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(30)),
-                      border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(30)),
-                      prefixIcon: const Icon(
-                        CupertinoIcons.smiley_fill,
-                        color: Colors.white,
-                      )),
-                )),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3),
-                  child: InkWell(
-                      splashFactory: InkRipple.splashFactory,
-                      onTap: () {
-                        ind++;
-                        DateTime now = DateTime.now();
-                        String formattedDate = DateFormat('kk:mm').format(now);
-                        Chatbox.put(
-                          "$ind",
-                          Chatdata(
-                            content: cont.text,
-                            time: formattedDate,
-                            ky: "1",
-                            indx: ind,
-                          ),
-                        );
-                        cont.clear();
-                        setState(() {});
-                      },
-                      child: const CircleAvatar(
-                        backgroundColor: Colors.teal,
-                        radius: 30,
-                        child: Icon(
-                          Icons.send,
-                          size: 25,
-                          color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: cont,
+                    onEditingComplete: () {
+                      ind++;
+                      DateTime now = DateTime.now();
+                      String formattedDate = DateFormat('kk:mm').format(now);
+                      Chatbox.put(
+                        "$ind",
+                        Chatdata(
+                          content: cont.text,
+                          time: formattedDate,
+                          ky: "1",
+                          indx: ind,
                         ),
-                      )),
-                ),
-              ],
+                      );
+                      cont.clear();
+                      setState(() {});
+                    },
+                    cursorWidth: 3,
+                    style: const TextStyle(color: Colors.white),
+                    cursorColor: Colors.green,
+                    decoration: InputDecoration(
+                        hintText: "Message",
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Colors.grey.shade600,
+                        focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.transparent),
+                            borderRadius: BorderRadius.circular(30)),
+                        border: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.transparent),
+                            borderRadius: BorderRadius.circular(30)),
+                        prefixIcon: const Icon(
+                          CupertinoIcons.smiley_fill,
+                          color: Colors.white,
+                        )),
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 3),
+                    child: InkWell(
+                        splashFactory: InkRipple.splashFactory,
+                        onTap: () {
+                          ind++;
+                          DateTime now = DateTime.now();
+                          String formattedDate = DateFormat('kk:mm').format(now);
+                          Chatbox.put(
+                            "$ind",
+                            Chatdata(
+                              content: cont.text,
+                              time: formattedDate,
+                              ky: "1",
+                              indx: ind,
+                            ),
+                          );
+                          cont.clear();
+                          setState(() {});
+                        },
+                        child: const CircleAvatar(
+                          backgroundColor: Colors.teal,
+                          radius: 30,
+                          child: Icon(
+                            Icons.send,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                        )),
+                  ),
+                ],
+              ),
             )
           ],
         ),
